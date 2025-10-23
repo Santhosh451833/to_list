@@ -1,0 +1,247 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e0f2f7; /* Lighter blue background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    width: 100%;
+    max-width: 550px;
+    border: 1px solid #cce7ed; /* Light border */
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50; /* Darker text */
+    margin-bottom: 30px;
+    font-size: 2.2em;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px; /* Space between input and select/button */
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+#taskInput {
+    flex-grow: 1;
+    padding: 12px 18px;
+    border: 1px solid #b3e0ff; /* Light blue border */
+    border-radius: 6px;
+    font-size: 17px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    min-width: 150px; /* Ensure input is not too small */
+}
+
+#taskInput:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+#prioritySelect {
+    padding: 10px 15px;
+    border: 1px solid #b3e0ff;
+    border-radius: 6px;
+    background-color: #f8fcff;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.7L146.2%20227.2%2018.6%2075.1c-6.7-6.7-17.7-6.7-24.4%200-6.7%206.7-6.7%2017.7%200%2024.4l130.4%20130.4c6.7%206.7%2017.7%206.7%2024.4%200l130.4-130.4c6.8-6.7%206.8-17.7.1-24.4z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px; /* Make space for the custom arrow */
+}
+
+#addTaskBtn {
+    background-color: #28a745; /* Green for add */
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+#addTaskBtn:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+/* Controls Section (Filters and Clear Completed) */
+.controls-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between filters and clear button */
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn {
+    background-color: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #dee2e6;
+    border-color: #adb5bd;
+}
+
+.filter-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+#clearCompletedBtn {
+    background-color: #dc3545; /* Red for clear */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+#clearCompletedBtn:hover {
+    background-color: #c82333;
+}
+
+/* Task List */
+#taskList {
+    list-style: none;
+    padding: 0;
+}
+
+#taskList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdfdfd;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2f0f5;
+    font-size: 1.05em;
+    color: #34495e; /* Darker text */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative; /* For priority dot */
+    flex-wrap: wrap; /* Allow content to wrap */
+}
+
+#taskList li:hover {
+    background-color: #f0f8ff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#taskList li.completed {
+    text-decoration: line-through;
+    color: #95a5a6;
+    background-color: #f7f9fa;
+    border-color: #e9edf0;
+}
+
+.task-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    cursor: pointer; /* Indicate it's clickable/editable */
+}
+
+.task-text {
+    word-break: break-word; /* Prevent long words from overflowing */
+}
+
+.task-meta {
+    font-size: 0.85em;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+.task-meta .priority-text {
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+#taskList li .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+    margin-left: 10px; /* Space from task text */
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+#taskList li .delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Priority Dots */
+#taskList li::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    left: 8px; /* Position it to the left */
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7); /* White ring */
+}
+
+#taskList li[data-priority="low"]::before { background-color: #28a745; } /* Green */
+#taskList li[data-priority="medium"]::before { background-color: #ffc107; } /* Yellow */
+#taskList li[data-priority="high"]::before { background-color: #dc3545; } /* Red */
+
+#taskList li .task-content {
+    margin-left: 18px; /* Offset for the priority dot */
+}
+
+
+/* Task Edit Input */
+.edit-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    font-size: 1.05em;
+    box-sizing: border-box; /* Include padding in width */
+    outline: none;
+}
